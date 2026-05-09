@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="b1c2d3e4-f5a6-47b8-9c01-abcdef123456" version="1">
+    <Properties>
+        <Name>Wonder Friendly Continents</Name>
+        <Description>A custom map type with two large continents, small continents, and equatorial straits ideal for Golden Gate Bridge.</Description>
+        <Teaser>Continents with better straits.</Teaser>
+        <Authors>satoon101</Authors>
+        <CompatibleVersions>2.0</CompatibleVersions>
+    </Properties>
+
+    <FrontEndActions>
+        <UpdateDatabase id="WFC_Setup">
+            <File>Configuration/WonderFriendlyContinents.xml</File>
+        </UpdateDatabase>
+        <UpdateText id="TextUpdate">
+            <File>Text/Text.xml</File>
+        </UpdateText>
+    </FrontEndActions>
+    <InGameActions>
+        <ImportFiles id="LoadMapScripts">
+            <Properties>
+                <LoadOrder>350</LoadOrder>
+            </Properties>
+            <File>Maps/WonderFriendlyContinents.lua</File>
+        </ImportFiles>
+    </InGameActions>
+    <Files>
+        <File>Configuration/WonderFriendlyContinents.xml</File>
+        <File>Maps/WonderFriendlyContinents.lua</File>
+        <File>Text/Text.xml</File>
+    </Files>
+</Mod>

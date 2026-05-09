@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameInfo>
+    <Maps>
+        <Row Domain="Maps:Expansion2Maps" File="WonderFriendlyContinents.lua" Name="LOC_MAP_TYPE_WONDER_FRIENDLY_CONTINENTS" Description="LOC_MAP_TYPE_WONDER_FRIENDLY_CONTINENTS_DESCRIPTION" SortIndex="10" />
+    </Maps>
+
+    <Parameters>
+        <Row Key1="Map" Key2="WonderFriendlyContinents.lua" ParameterId="WorldAge" Name="LOC_MAP_WORLD_AGE_NAME" Description="LOC_MAP_WORLD_AGE_DESCRIPTION" DefaultValue="2" Domain="WorldAge" ConfigurationGroup="Map" ConfigurationId="world_age" GroupId="MapOptions" Hash="0" SortIndex="1000001" />
+    </Parameters>
+</GameInfo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+
+	<LocalizedText>
+		<Row Tag="LOC_MAP_TYPE_WONDER_FRIENDLY_CONTINENTS" Language="en_US">
+			<Text>Wonder Friendly Continents</Text>
+		</Row>
+		<Row Tag="LOC_MAP_TYPE_WONDER_FRIENDLY_CONTINENTS_DESCRIPTION" Language="en_US">
+			<Text>A custom map type with two large continents, small continents, and equatorial straits ideal for Golden Gate Bridge.</Text>
+		</Row>
+	</LocalizedText>
+
+</GameData>
