@@ -36,7 +36,7 @@ end
 
 -------------------------------------------------------------------------------
 function GenerateMap()
-	print("Generating Continents Map");
+	print("Generating Wonder Friendly Continents Map");
 
 	-- Set globals
 	g_iW, g_iH = Map.GetGridSize();
@@ -128,9 +128,9 @@ end
 -------------------------------------------------------------------------------
 function AddRivers()
     -- I've manually set these to your 1.25x - 1.5x requirements
-    local riverSourceRangeDefault = 4;
-    local seaWaterRangeDefault = 3;
-    local plotsPerRiverEdge = 8; -- Lowered from 12 for more density
+    local riverSourceRangeDefault = 3;
+    local seaWaterRangeDefault = 2;
+    local plotsPerRiverEdge = 4; -- Lowered from 12 for more density
 
     print("Map Generation - Adding MORE Rivers (Override)");
 
@@ -138,7 +138,7 @@ function AddRivers()
         function(plot) return (plot:IsHills() or plot:IsMountain()); end,
         function(plot)
             -- Changed from 8 to 5 to make flat-land rivers 1.25x more likely
-            return (not plot:IsCoastalLand()) and (TerrainBuilder.GetRandomNumber(5, "MapGenerator AddRivers") == 0);
+            return (not plot:IsCoastalLand()) and (TerrainBuilder.GetRandomNumber(3, "MapGenerator AddRivers") == 0);
         end,
         function(plot)
             local area = plot:GetArea();
@@ -179,7 +179,8 @@ function GeneratePlotTypes()
 	print("Generating Plot Types");
 	local plotTypes = {};
 
-	local sea_level_low = 57;
+	--local sea_level_low = 57;
+	local sea_level_low = 47;
 	local sea_level_normal = 62;
 	local sea_level_high = 66;
 	local world_age_new = 5;
@@ -202,7 +203,8 @@ function GeneratePlotTypes()
 	end
 
 	--	local sea_level
-    	local sea_level = MapConfiguration.GetValue("sea_level");
+	local sea_level = MapConfiguration.GetValue("sea_level");
+	print("Sea Level:", sea_level)
 	if sea_level == 1 then -- Low Sea Level
 		water_percent = sea_level_low
 	elseif sea_level == 2 then -- Normal Sea Level
@@ -212,6 +214,7 @@ function GeneratePlotTypes()
 	else
 		water_percent = TerrainBuilder.GetRandomNumber(sea_level_high - sea_level_low, "Random Sea Level - Lua") + sea_level_low  + 1;
 	end
+	print("Water Percent:", water_percent)
 
 	-- Set values for hills and mountains according to World Age chosen by user.
 	if world_age <= world_age_old  then -- 5 Billion Years
@@ -738,6 +741,7 @@ function AddWonderStraits()
     local straitsCreated = 0
     local midY = math.floor(iH / 2)
 
+	print("Data:", iW, iH, midY)
     -- Look for spots 15% north or south of equator
     for y = midY - 10, midY + 10 do
         for x = 0, iW - 1 do
@@ -820,7 +824,7 @@ function CreateBridgePoint(x, y)
 		terrainChoice = g_TERRAIN_TYPE_GRASS
 	end
 
-	print("CreateBridgePoint2", x, y)
+	print("CreateBridgePoint2", x, y, terrainChoice)
 	TerrainBuilder.SetTerrainType(pPlot, terrainChoice)
 	return true
 end
