@@ -180,7 +180,7 @@ function GeneratePlotTypes()
 	local plotTypes = {};
 
 	--local sea_level_low = 57;
-	local sea_level_low = 47;
+	local sea_level_low = 50;
 	local sea_level_normal = 62;
 	local sea_level_high = 66;
 	local world_age_new = 5;
@@ -745,7 +745,7 @@ function AddWonderStraits()
     -- Look for spots 15% north or south of equator
     for y = midY - 10, midY + 10 do
         for x = 0, iW - 1 do
-            if straitsCreated >= 8 then break end
+            if straitsCreated >= 10 then break end
 			if CreateBridgePoint(x, y) then
 				straitsCreated = straitsCreated + 1
 			end
@@ -754,7 +754,7 @@ function AddWonderStraits()
     straitsCreated = 0
     for y = midY - 10, midY + 10 do
         for x = iW - 1, 0, -1 do
-            if straitsCreated >= 8 then break end
+            if straitsCreated >= 10 then break end
 			if CreateBridgePoint(x, y) then
 				straitsCreated = straitsCreated + 1
 			end
