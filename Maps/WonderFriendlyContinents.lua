@@ -26,7 +26,7 @@ local g_continentsFrac;
 -------------------------------------------------------------------------------
 function ApplyTerrain(plotTypes, terrainTypes)
 	for i = 0, (g_iW * g_iH) - 1, 1 do
-		pPlot = Map.GetPlotByIndex(i);
+		local pPlot = Map.GetPlotByIndex(i);
 		if (plotTypes[i] == g_PLOT_TYPE_HILLS) then
 			terrainTypes[i] = terrainTypes[i] + 1;
 		end
@@ -46,8 +46,8 @@ function GenerateMap()
 		temperature  =  1 + TerrainBuilder.GetRandomNumber(3, "Random Temperature- Lua");
 	end
 
-	plotTypes = GeneratePlotTypes();
-	terrainTypes = GenerateTerrainTypes(plotTypes, g_iW, g_iH, g_iFlags, false, temperature);
+	local plotTypes = GeneratePlotTypes();
+	local terrainTypes = GenerateTerrainTypes(plotTypes, g_iW, g_iH, g_iFlags, false, temperature);
 
 	ApplyTerrain(plotTypes, terrainTypes);
     AddWonderStraits()
@@ -78,7 +78,7 @@ function GenerateMap()
 	TerrainBuilder.AnalyzeChokepoints();
 	TerrainBuilder.StampContinents();
 
-	resourcesConfig = MapConfiguration.GetValue("resources");
+	local resourcesConfig = MapConfiguration.GetValue("resources");
 	local startConfig = MapConfiguration.GetValue("start");-- Get the start config
 	args = {
 		resources = resourcesConfig,
@@ -315,7 +315,7 @@ function GeneratePlotTypes()
 	args.blendRidge = 10;
 	args.blendFract = 1;
 	args.extra_mountains = 5;
-	mountainRatio = 8 + world_age * 3;
+	local mountainRatio = 8 + world_age * 3;
 	plotTypes = ApplyTectonics(args, plotTypes);
 	plotTypes = AddLonelyMountains(plotTypes, mountainRatio);
 
